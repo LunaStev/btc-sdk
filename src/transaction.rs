@@ -1,4 +1,4 @@
-use secp256k1::{Secp256k1, SecretKey, PublicKey};
+use secp256k1::{Secp256k1, SecretKey};
 
 pub struct TransactionInput {
     pub txid: String,
@@ -23,7 +23,7 @@ impl Transaction {
     pub fn sign(&self, private_key: &SecretKey) -> Vec<u8> {
         let secp = Secp256k1::new();
         let message = b"transaction_data";
-        let sig = secp.sign_ecdsa_recoverable(&message.into(), private_key);
+        let sig = secp.sign_ecdsa_low_r(&message.into(), private_key);
         sig.serialize_compact().to_vec()
     }
 }

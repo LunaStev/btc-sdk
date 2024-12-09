@@ -1,4 +1,4 @@
-use rocksdb::{DB, Options};
+use rocksdb::{DB};
 
 pub struct BlockchainDB {
     pub db: DB,
