@@ -23,49 +23,20 @@ btc-sdk = "0.1.0"
 ```
 
 ### 2. Genesis Block Creation
-You can create the genesis block by setting up the `CoinConfig` and `BlockchainDB`, then calling the `generate_genesis_block` method.
 ```rust
-use btc_sdk::{CoinConfig, BlockchainDB};
+use btc_sdk::{CoinConfig, genesis};
 
 fn main() {
-    // Define coin configuration
-    let config = CoinConfig {
-        name: "MyCoin".to_string(),
-        symbol: "MC".to_string(),
-        supply: 1000000,
-        initial_reward: 50,
-        initial_difficulty: 1,
-    };
+    let config = CoinConfig::new(
+        "MyCoin",
+        21_000_000,
+        600,
+        "This is the first custom coin!"
+    );
 
-    // Generate the genesis block
-    let genesis_block = config.generate_genesis_block();
-    
-    // Initialize the blockchain database
-    let mut db = BlockchainDB::new();
-    
-    // Add the genesis block to the database
-    db.add_block(&genesis_block);
-    
-    println!("Genesis Block: {:?}", genesis_block);
+    let genesis_block = genesis::create_genesis_block(&config);
+    println!("🚀 Genesis Block: {:?}", genesis_block);
 }
-```
-
-### 3. Blockchain Database Storage and Loading
-You can store blocks in the blockchain database and load them later.
-
-```rust
-// Initialize the blockchain database
-let mut db = BlockchainDB::new();
-
-// Create a new block
-let new_block = Block::new(1, "previous_block_hash", "data", "block_hash");
-
-// Add the new block to the database
-db.add_block(&new_block);
-
-// Load all blocks from the blockchain database
-let blocks = db.get_blocks();
-println!("{:?}", blocks);
 ```
 
 ## Implemented Features
