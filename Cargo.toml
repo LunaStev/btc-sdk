@@ -1,6 +1,6 @@
 [package]
 name = "btc_sdk"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["LunaStev <lunastev@gurmstudis.com>"]
 description = "A Rust library for creating Bitcoin-like blockchain systems. It provides functionality for generating the genesis block, managing blockchain data, and preparing for P2P network connections, enabling the development of custom cryptocurrencies."

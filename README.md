@@ -19,7 +19,7 @@ To use this library, you need to first add it as a dependency in your `Cargo.tom
 In your `Cargo.toml`, add the following:
 
 ```toml
-btc-sdk = "0.1.0"
+btc-sdk = "0.1.1"
 ```
 
 ### 2. Genesis Block Creation
